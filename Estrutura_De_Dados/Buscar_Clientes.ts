@@ -2,8 +2,6 @@ import readlinesync = require("readline-sync")
 import {ClienteQueue} from "./ClienteQueue";
 
 function main(){
-    // CORREÇÃO 2: Variável da Fila deve ser 'filaCliente' ou alteramos todas as referências.
-    // Vamos usar 'filaCliente' para sermos consistentes com a declaração original.
     const filaCliente = new ClienteQueue();
     let opcao: number = -1;
 
@@ -16,7 +14,7 @@ function main(){
         console.log("0: Sair");
         console.log("-------------------------------------------");
 
-        // CORREÇÃO 3: Usar 'readlinesync' para a função question
+        
         const input = readlinesync.question("Digite uma opção: ");
         opcao = parseInt(input)
 
@@ -25,16 +23,16 @@ function main(){
             continue;
         }
         
-        // CORREÇÃO 1: 'switch' com letra minúscula
+        
         switch(opcao){
             case 1: 
-                // CORREÇÃO 3: Usar 'readlinesync'
+                
                 const nomeCliente = readlinesync.question("Digite o nome do Cliente: ");
-                // CORREÇÃO 2: Usar 'filaCliente'
+             
                 filaCliente.adicionar(nomeCliente);
 
                 console.log("\nFila: ");
-                // CORREÇÃO 2: Usar 'filaCliente'
+                
                 filaCliente.listar().forEach(nome => console.log(nome));
                 console.log("\nCliente Adicionado!");
                 break;
@@ -51,15 +49,15 @@ function main(){
                 break;
             
             case 3: 
-                // CORREÇÃO 2: Usar 'filaCliente'
+                
                 if (filaCliente.estaVazia()) {
                     console.log("\nA Fila está vazia!");
                 } else {
-                    // CORREÇÃO 2: Usar 'filaCliente'
+                    
                     const clienteChamado = filaCliente.chamar();
                     
                     console.log("\nFila: ");
-                    // CORREÇÃO 2: Usar 'filaCliente'
+                    
                     filaCliente.listar().forEach(nome => console.log(nome));
                     
                     console.log(`\nO Cliente ${clienteChamado} foi Chamado!`);
